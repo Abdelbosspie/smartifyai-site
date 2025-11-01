@@ -1,5 +1,6 @@
 // app/layout.js
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 
 export const metadata = {
@@ -12,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Fonts + your old CSS */}
+        {/* Fonts + Styles */}
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -24,14 +25,16 @@ export default function RootLayout({ children }) {
         />
         <link rel="stylesheet" href="/styles.css" />
       </head>
+
       <body>
-        {/* Page content */}
+        {/* Main page content */}
         {children}
 
-        {/* Your old JS file */}
+        {/* Your JS file */}
         <Script src="/script.js" strategy="afterInteractive" />
 
-        {/* ✅ Vercel Speed Insights */}
+        {/* ✅ Vercel Analytics & Speed Insights */}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
