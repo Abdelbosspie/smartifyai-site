@@ -1,10 +1,12 @@
 // app/layout.js
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 
 export const metadata = {
-  title: "SmartifyAI – Diagnostic",
-  description: "Minimal Next.js app to verify Analytics + Speed Insights."
+  title: "SmartifyAI — We integrate AI into your business in one week",
+  description:
+    "SmartifyAI integrates AI into your business in one week. Chatbots, automations, and AI-driven analytics."
 };
 
 export default function RootLayout({ children }) {
@@ -24,10 +26,13 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         {children}
-        {/* Vercel Web Analytics + Speed Insights */}
+
+        {/* Your site JS (loads after hydration) */}
+        <Script src="/script.js" strategy="afterInteractive" />
+
+        {/* Vercel tracking */}
         <Analytics />
         <SpeedInsights />
-        <script src="/script.js" defer></script>
       </body>
     </html>
   );
